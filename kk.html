@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #200a36, #fc2542);
+      overflow: hidden;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      animation: moveAndChange 4s infinite;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes moveAndChange {
+      0% {
+        transform: translate(0, 0) scale(1);
+        background: linear-gradient(45deg, #ff4e50, #f9d423);
+      }
+      25% {
+        transform: translate(200px, 0) scale(1.2);
+        background: linear-gradient(45deg, #42e695, #3bb2b8);
+      }
+      50% {
+        transform: translate(200px, 200px) scale(0.8);
+        background: linear-gradient(45deg, #f093fb, #f5576c);
+      }
+      75% {
+        transform: translate(0, 200px) scale(1.5);
+        background: linear-gradient(45deg, #36d1dc, #5b86e5);
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        background: linear-gradient(45deg, #ff4e50, #f9d423);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+</body>
+</html>

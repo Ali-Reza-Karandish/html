@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Control Game</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .game-container {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      background: white;
+      border: 5px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .ball {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #ff5722, #e91e63);
+      border-radius: 50%;
+      top: 185px;
+      left: 285px;
+    }
+
+    .instructions {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="ball" id="ball"></div>
+    <div class="instructions">Use arrow keys to move the ball!</div>
+  </div>
+
+  <script>
+    const ball = document.getElementById('ball');
+    const container = document.querySelector('.game-container');
+    
+    const ballSpeed = 10; // Speed of the ball
+    let ballPosition = {
+      top: 185,
+      left: 285,
+    };
+
+    document.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'ArrowUp':
+          if (ballPosition.top > 0) {
+            ballPosition.top -= ballSpeed;
+          }
+          break;
+        case 'ArrowDown':
+          if (ballPosition.top < container.clientHeight - ball.clientHeight) {
+            ballPosition.top += ballSpeed;
+          }
+          break;
+        case 'ArrowLeft':
+          if (ballPosition.left > 0) {
+            ballPosition.left -= ballSpeed;
+          }
+          break;
+        case 'ArrowRight':
+          if (ballPosition.left < container.clientWidth - ball.clientWidth) {
+            ballPosition.left += ballSpeed;
+          }
+          break;
+      }
+      updateBallPosition();
+    });
+
+    function updateBallPosition() {
+      ball.style.top = `${ballPosition.top}px`;
+      ball.style.left = `${ballPosition.left}px`;
+    }
+  </script>
+</body>
+</html>
